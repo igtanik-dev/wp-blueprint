@@ -42,10 +42,10 @@ setup:
 	# cleanup
 	docker compose run --rm wpcli wp post delete 1 --force || true
 	docker compose run --rm wpcli wp post delete 2 --force || true
-	docker compose run --rm wpcli wp post delete 3 --force
+	docker compose run --rm wpcli wp post delete 3 --force || true
 # 	docker compose run --rm wpcli wp comment delete 1 --force || true
-	docker compose run --rm wpcli wp plugin delete akismet
-	docker compose run --rm wpcli wp plugin delete hello
+	docker compose run --rm wpcli wp plugin delete akismet || true
+	docker compose run --rm wpcli wp plugin delete hello || true
 	
 	# discussion
 	docker compose run --rm wpcli wp option update default_comment_status closed

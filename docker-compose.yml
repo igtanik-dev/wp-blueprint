@@ -27,6 +27,7 @@ services:
       - wp_core:/var/www/html
       - ./wp-content:/var/www/html/wp-content
     depends_on:
+      - mysql
       - wordpress
 
   nginx:
