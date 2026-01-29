@@ -1,7 +1,5 @@
-version: "3.9"
-
 services:
-  db:
+  mysql:
     image: mysql:8.0
     env_file: .env
     volumes:
@@ -19,8 +17,17 @@ services:
       - wp_core:/var/www/html
       - ./wp-content:/var/www/html/wp-content
     depends_on:
-      db:
+      mysql:
         condition: service_healthy
+
+
+  wpcli:
+    image: wordpress:cli
+    volumes:
+      - wp_core:/var/www/html
+      - ./wp-content:/var/www/html/wp-content
+    depends_on:
+      - wordpress
 
   nginx:
     image: nginx:1.25
